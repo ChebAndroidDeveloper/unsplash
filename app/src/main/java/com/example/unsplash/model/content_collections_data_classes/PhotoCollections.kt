@@ -1,6 +1,8 @@
 package com.example.unsplash.model.content_collections_data_classes
 
-data class Photo(
+import com.example.unsplash.model.data_classes_for_search_result.Photo
+
+data class PhotoCollections(
     val id: String,
     val created_at: String,
     val updated_at: String,
@@ -39,7 +41,7 @@ data class Collection(
     val published_at: String,
     val last_collected_at: String,
     val updated_at: String,
-    val cover_photo: Photo?,
+    val cover_photoCollections: Photo?,
     val user: User?
 )
 

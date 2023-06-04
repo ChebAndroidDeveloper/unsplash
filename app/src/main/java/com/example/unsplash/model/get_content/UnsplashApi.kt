@@ -1,6 +1,8 @@
 package com.example.unsplash.model.get_content
 
 
+import com.example.unsplash.model.collection_data_classes.CollectionResponse
+import com.example.unsplash.model.content_collections_data_classes.PhotoCollections
 import com.example.unsplash.model.data_classes.LikeResponse
 import com.example.unsplash.model.data_classes.Photos
 import com.example.unsplash.model.data_classes.PhotoDetails
@@ -57,7 +59,7 @@ interface UnsplashApi {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
         @Header("Authorization") authorization: String
-    ): Response<List<com.example.unsplash.model.collection_data_classes.CollectionResponse>>
+    ): Response<List<CollectionResponse>>
 
     @GET("/collections/{id}/photos")
     suspend fun getCollectionContent(
@@ -65,7 +67,7 @@ interface UnsplashApi {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int,
         @Header("Authorization") authorization: String
-    ): Response<List<com.example.unsplash.model.content_collections_data_classes.Photo>>
+    ): Response<List<PhotoCollections>>
 
 
     @GET("/me")

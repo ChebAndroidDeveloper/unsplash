@@ -172,14 +172,16 @@ class MainViewModel @Inject constructor(
     }
 
     val collectionsContentFlow =
-        MutableStateFlow(PagingData.empty<com.example.unsplash.model.content_collections_data_classes.Photo>())
+        MutableStateFlow(PagingData.empty<com.example.unsplash.model.content_collections_data_classes.PhotoCollections>())
+
     fun getCollectionsContentDyId(id: String, token: String) {
         viewModelScope.launch {
             Pager(PagingConfig(pageSize = 20)) {
                 CollectionContentListPagingSource(
-                    api = unsplashApi,
+                    collectionId = id,
                     authorization = token,
-                    collectionId = id
+                    api = unsplashApi
+
                 )
             }.flow.cachedIn(viewModelScope).collectLatest { pagingData ->
                 collectionsContentFlow.emit(pagingData)
